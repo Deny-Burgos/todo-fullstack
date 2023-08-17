@@ -1,9 +1,12 @@
+import { createNotification } from '../components/notification.js';
+
 const from = document.querySelector('#form');
 const nameInput = document.querySelector('#name-input');
 const emailInput = document.querySelector('#email-input');
 const passwordInput = document.querySelector('#password-input');
 const matchInput = document.querySelector('#match-input');
 const formBtn = document.querySelector('#form-btn');
+const notification = document.querySelector('#notification');
 
 // regex
 const NAME_VALIDATION = /^[A-ZÑ][a-zñ]{2,10} [A-ZÑ][a-zñ]{4,16}$/;
@@ -67,7 +70,10 @@ from.addEventListener('submit', async e => {
     const response = await axios.post('/api/users', newUser);
     console.log(response);
   } catch (error) {
-    console.log(error);
+    createNotification(true, error.response.data.error)
+    setTimeout(() => {
+      notification.innerHTML = '';
+    }, 5000)
   }
 
 

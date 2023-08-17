@@ -30,7 +30,7 @@ app.use('/styles', express.static(path.resolve(__dirname, 'views', 'styles')));
 app.use('/components', express.static(path.resolve(__dirname, 'views', 'components')));
 app.use('/images', express.static(path.resolve('img')));
 
-app.user(morgan('tiny'));
+app.use(morgan('tiny'));
 
 // Rutas Back-end
 app.use('/api/users', usersRouter);
