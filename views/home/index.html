@@ -6,29 +6,20 @@
   <title>Document</title>
   <link rel="stylesheet" href="/styles/output.css">
 </head>
-<body class="bg-slate-800">
-  <div class="hidden">
-    <h1 class="text-red-500">Home</h1>
-    <div id="btn-bar"></div>
-  </div>
+<body>
+  <nav id="navbar" class="fixed top-0 right-0 left-0 bg-indigo-700 h-16"></nav>
 
-  <main class="flex flex-col
-  justify-center
-  items-center
-  h-screen
-  px-4
-  gap-8
-  lg:flex-row
-  lg:w-3/4
-  mx-auto
-  text-white">
-    <h1 id="title" class="text-4xl font-bold lg:w-[50%] lg:text-center lg:text-8xl">Titulo</h1>
-    <div id="desc-container" class="flex-col gap-8 lg:w-[50%] mostrar-desc opacity-0">
-      <p class="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus praesentium, rerum blanditiis animi dolore deleniti! Enim veniam non possimus voluptas cumque odit doloremque illum temporibus ea. Esse, odio. Quidem, fugiat!</p>
-      <button>Entrar a la app</button>
+  <div class="pt-16 h-screen flex justify-center items-center flex-col px-4 gap-4 md:flex-row lg:w-3/5 mx-auto md:gap-8">
+    <h1 class="text-indigo-700 font-bold text-4xl md:text-7xl">TodoApp</h1>
+    <div class="flex flex-col gap-4 md:text-xl">
+      <p class="text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid eaque voluptates minus, soluta maxime, error, quas esse magnam minima dolores amet mollitia quos similique. Accusamus doloremque nemo atque. Repellendus, iste!</p>
+      <div class="flex justify-around gap-4">
+        <a class="bg-slate-600 py-2 px-4 rounded-lg text-white font-bold hover:bg-slate-700 w-2/4 text-center transition ease-in-out" href="/login/">Login</a>
+        <a class="bg-indigo-700 py-2 px-4 rounded-lg text-white font-bold hover:bg-indigo-800 w-2/4 text-center transition ease-in-out" href="/signup/">Registro</a>
+      </div>
     </div>
-  </main>
+  </div>
   <script src="index.js"></script>
- <script type="module" src="/components/LinkBtn.js"></script>
+  <script src="/components/nav.js"></script>
 </body>
 </html>
