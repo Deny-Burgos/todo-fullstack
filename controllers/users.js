@@ -26,7 +26,7 @@ usersRouter.post('/', async (request, response) => {
   });
 
   const saveUser = await newUser.save();
-  const token = jwt.sign({ id: saveUser.id }, process.env.ACCES_TOKEN_SECRET, {
+  const token = jwt.sign({ id: saveUser.id }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '1d',
   });
 
@@ -55,7 +55,7 @@ usersRouter.post('/', async (request, response) => {
 usersRouter.patch('/:id/:token', async (request, response) => {
   try {
     const token = request.params.token;
-    const decodeToken = jwt.verify(token, process.env.ACCES_TOKEN_SECRET);
+    const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     const id = decodeToken.id;
     await User.findByIdAndUpdate(id, { verified: true });
     return response.sendStatus(200);
@@ -65,7 +65,7 @@ usersRouter.patch('/:id/:token', async (request, response) => {
     const { email } = await User.findById(id);
 
     // firmar el nuevo token
-    const token = jwt.sign({ id: id }, process.env.ACCES_TOKEN_SECRET, {
+    const token = jwt.sign({ id: id }, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: '1d',
     });
 
