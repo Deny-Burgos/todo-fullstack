@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const usersRouter = require('./controllers/users');
 const loginRouter = require('./controllers/login');
+const todosRouter = require('./controllers/todo');
+const { userExtractor } = require('./middleware/auth');
 
 (async () => {
   try {
@@ -38,5 +40,6 @@ app.use(morgan('tiny'));
 // Rutas Back-end
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/todos', userExtractor, todosRouter);
 
 module.exports = app;

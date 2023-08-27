@@ -28,7 +28,7 @@ loginRouter.post('/', async (request, response) => {
     expiresIn: '1d',
   });
 
-  response.cookie('accesToken', accessToken, {
+  response.cookie('accessToken', accessToken, {
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
