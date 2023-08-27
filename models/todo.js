@@ -1,7 +1,7 @@
 const { default: mongoose } = require('mongoose');
 
 const todoSchema = new mongoose.Schema({
-  Text: String,
+  text: String,
   checked: Boolean,
   user: {
     type: mongoose.Schema.Types.ObjectId,

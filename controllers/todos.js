@@ -11,9 +11,39 @@ todosRouter.get('/', async (request, response) => {
 todosRouter.post('/', async (request, response) => {
   const user = request.user;
   const { text } = request.body;
-  console.log(text);
+  const newTodo = new Todo({
+    text,
+    checked: false,
+    user: user._id,
+  });
+  const savedTodo = await newTodo.save();
+  user.todos = user.todos.concat(savedTodo._id);
+  await user.save();
 
-  return response.status(200).json(todos);
+  return response.status(201).json(savedTodo);
 });
+
+todosRouter.delete('/:id', async (request, response) => {
+  const user = request.user;
+
+  await Todo.findByIdAndDelete(request.params.id);
+
+  user.todos = user.todos.filter(todo => todo.id !== request.params.id);
+
+  await user.save();
+  return response.sendStatus(204);
+});
+
+todosRouter.patch('/:id', async (request, response) => {
+  const user = request.user;
+
+  const { checked } = request.body;
+
+  await Todo.findByIdAndUpdate(request.params.id, { checked });
+
+  return response.sendStatus(200);
+
+});
+
 
 module.exports = todosRouter;
