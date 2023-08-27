@@ -1,7 +1,7 @@
 const app = require('./app');
-const htpp = require('http');
+const http = require('http');
 
-const server = htpp.createServer(app);
+const server = http.createServer(app);
 
 server.listen(3000, () => {
   console.log('El servidor esta corriendo en el puerto 3000');

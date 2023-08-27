@@ -68,11 +68,12 @@ from.addEventListener('submit', async e => {
       password: passwordInput.value,
     };
 
+    // eslint-disable-next-line no-undef
     const { data } = await axios.post('/api/users', newUser);
-    createNotification(false, data)
+    createNotification(false, data);
     setTimeout(() => {
       notification.innerHTML = '';
-    }, 5000)
+    }, 5000);
     nameInput.value = '';
     emailInput.value = '';
     passwordInput.value = '';
@@ -82,10 +83,10 @@ from.addEventListener('submit', async e => {
     validation(passwordInput, false);
     validation(matchInput, false);
   } catch (error) {
-    createNotification(true, error.response.data.error)
+    createNotification(true, error.response.data.error);
     setTimeout(() => {
       notification.innerHTML = '';
-    }, 5000)
+    }, 5000);
   }
 
 

@@ -10,6 +10,7 @@ form.addEventListener('submit', async e => {
       email: emailInput.value,
       password: passwordInput.value,
     };
+    // eslint-disable-next-line no-undef
     await axios.post('/api/login', user);
     window.location.pathname = '/todos/';
   } catch (error) {

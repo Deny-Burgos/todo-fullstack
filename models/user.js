@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  todos: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Todo',
+  }],
 });
 
 userSchema.set('toJSON', {
@@ -19,6 +23,6 @@ userSchema.set('toJSON', {
   },
 });
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
