@@ -28,7 +28,7 @@ todosRouter.delete('/:id', async (request, response) => {
 
   await Todo.findByIdAndDelete(request.params.id);
 
-  user.todos = user.todos.filter(todo => todo.id !== request.params.id);
+  user.todos = user.todos.filter(id => id.toString() !== request.params.id);
 
   await user.save();
   return response.sendStatus(204);
